@@ -49,13 +49,14 @@ def create_student(body : dict = Body(...)):
 def update_student(student_id: str, body: dict = Body(...)):
      updated_student = students_service.update_student(
         student_id,
-        firstName = body.get("first_name"),
-        lastName = body.ger("last_name"),
+        first_name = body.get("first_name"),
+        last_name = body.get("last_name"),
         email= body.get("email"),
      )
-     return updated_student.todict() 
+     return updated_student.to_dict() 
 
-"""
-      "student_id": "3a8cd2ce-b6b7-4e83-970b-e24ca0d92ac4",
-     
-"""
+@app.delete('/students/{student_id}', status_code=status.HTTP_200_OK)
+def delete_students(student_id: str):
+    return{"message": students_service.delete_student(student_id)}
+
+

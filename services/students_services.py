@@ -40,11 +40,11 @@ class StudentsService:
     def delete_student(self, student_id):
         found_student = self.get_student_by_id(student_id)
         if not found_student:
-            return f"Student with id {student_id} has been deleted"
+            return f"Student with id {student_id} was not found"
 
         self.session.delete(found_student)
         self.session.commit()
-
+        returnf"Student with id {student_id} has been delated"
     def __str__ (self):
         pass
 
